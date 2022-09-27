@@ -19,12 +19,18 @@ const sockets = [];
 
 wss.on("connection", (socket) => {
     sockets.push(socket); //연결된 브라우저들을 알기위해 sockets에 넣음.
+    socket["nickname"] = "Anon";
     console.log("Connected to Browser");
     socket.on("close", () => console.log("Disconnected from the browser"));
-    socket.on('message', (message, isBinary) => {
-        const messageString = isBinary ? message : message.toString('utf8');
-        sockets.forEach(Asockets => Asockets.send(message));
-        });//isBinary를 안쓰면 message가 이상한 형태로 나옴.
+    socket.on('message', (msg) => {
+        const message = JSON.parse(msg);
+        switch(message.type) {
+            case "new_message":
+                sockets.forEach((aSockets) => aSockets.send(`${socket.nickname}: ${message.payload}`));
+            case "nickname":
+                socket["nickname"] = message.payload;
+        } 
+    });//isBinary를 안쓰면 message가 이상한 형태로 나옴.
 }); //wss.on은 addEventListener랑 비슷함. 브라우저로부터 이벤트가 발생하면 함수 실행.
 
 

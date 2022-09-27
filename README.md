@@ -24,3 +24,9 @@ pug > html을 가독성있게 쓸수 있게 해줌.
         socket을 통해 서버 혹은 브라우저에 message를 send하는 기능에 대해 배움.
         send > socket에 message를 전달.
         sockets = []를 만들어서 다른 socket에도 message를 보내는거 배움. 
+
+0.3 > 닉네임을 만들어서 서버에 누가 보냈는지 구분함.
+      socket 에 내가 원하는 정보를 저장할 수 있음. socket["nickname"] = message.payload 가 그 예.
+      API에 데이터를 보낼땐 무조건!!무조건 string 형태로 보내야한다.
+      JSON.stringify() 를 사용함.
+      그리고 다시 js로 오면 JSON.parse() 로 js에서 쓸 수 있는 형태로 바꿔주면된다.
