@@ -1,5 +1,5 @@
 import http from "http";
-import WebSocket from "ws";
+import SocketIO from "socket.io";
 import express from "express"; 
 
 const app = express();
@@ -12,9 +12,15 @@ app.get("/*", (req, res) => res.redirect("/"));
 
 const handleListen = () => console.log(`Listening on https://localhost:3000`);
 
-const server = http.createServer(app); // express로 server를 만듬. 
-const wss = new WebSocket.Server({ server }); //server 에 http와 websocket둘다 추가.
+const httpServer = http.createServer(app); // express로 server를 만듬. 
+const wsServer = SocketIO(httpServer); // socketIO 서버를 만듬 
 
+wsServer.on("connection", (socket) => {
+    console.log(socket);
+})
+
+
+/*
 const sockets = [];
 
 wss.on("connection", (socket) => {
@@ -30,8 +36,8 @@ wss.on("connection", (socket) => {
             case "nickname":
                 socket["nickname"] = message.payload;
         } 
-    });//isBinary를 안쓰면 message가 이상한 형태로 나옴.
-}); //wss.on은 addEventListener랑 비슷함. 브라우저로부터 이벤트가 발생하면 함수 실행.
+    });
+}); 
+*/
 
-
-server.listen(3000, handleListen);
+httpServer.listen(3000, handleListen);
