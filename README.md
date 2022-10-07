@@ -49,4 +49,10 @@ pug > html을 가독성있게 쓸수 있게 해줌.
       socket room 을 만들어서 채팅방을 만들 수 있음. ex) 배달 기사랑 나, 게임방 , tinder채팅방, ...
       
 0.5 >
-      socket.to 로 같은방 사람들에게 메세지를 보낼수 있음.
+      socket.to 로 같은방 사람들에게 메세지를 보낼수 있음. (본인 빼고 방안의 사람한테 보냄)
+      socket.rooms 로 socket이 들어가있는 방을 알수있음. (기본적으로 서버와 유저간의 private room 이 하나 있음)
+      emit은 socket으로 event이름을 전달한다.
+      event를 받는 쪽에서 socket.on("event name")으로 받는다. 
+      이때 argument는 개수, 형태 상관 x.. (awesome) 
+      채팅창 기능을 구현할 수 있었다.
+      
