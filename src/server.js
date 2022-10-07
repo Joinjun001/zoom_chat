@@ -16,8 +16,15 @@ const httpServer = http.createServer(app); // express로 server를 만듬.
 const wsServer = SocketIO(httpServer); // socketIO 서버를 만듬 
 
 wsServer.on("connection", (socket) => {
-    console.log(socket);
-})
+    socket.onAny((event) => {
+        console.log(`Socket Event: ${event}`);
+    });
+    socket.on("enter_room", (roomName, done) =>{
+        socket.join(roomName);
+        done();
+        socket.to(roomName).emit("welcome");
+    });
+});
 
 
 /*
