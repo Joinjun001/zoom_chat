@@ -13,6 +13,9 @@ express > 서버를 만들때 필요한 도구
 pug > html을 가독성있게 쓸수 있게 해줌.
 
 0.1 >   
+
+
+
       기본적인 뼈대 구축 MVC기반으로 폴더 생성
       src 파일안에 서버를 구축하는 것들은 담는다.
       public > 프론트엔드 파일(정적인 파일) 있는 곳
@@ -30,6 +33,8 @@ pug > html을 가독성있게 쓸수 있게 해줌.
 
 0.3 > 
 
+
+
       닉네임을 만들어서 서버에 누가 보냈는지 구분함.
       socket 에 내가 원하는 정보를 저장할 수 있음. socket["nickname"] = message.payload 가 그 예.
       API에 데이터를 보낼땐 무조건!!무조건 string 형태로 보내야한다.
@@ -37,6 +42,10 @@ pug > html을 가독성있게 쓸수 있게 해줌.
       그리고 다시 js로 오면 JSON.parse() 로 js에서 쓸 수 있는 형태로 바꿔주면된다.
 
 0.4 >  
+
+
+
+
       코드를 간단하게 만들어주는 framework 사용 (socket io!!!!)
       기존 websocket보다 더 신뢰성 있고 쉽게 코드를 만들 수 있음.
       인터넷이 끊겨도 다시 연결되면 자동으로 접속해주고, 기존 코드를 훨씬더 간결하고 멋있게 작성할 수 있음.
@@ -49,6 +58,8 @@ pug > html을 가독성있게 쓸수 있게 해줌.
       socket room 을 만들어서 채팅방을 만들 수 있음. ex) 배달 기사랑 나, 게임방 , tinder채팅방, ...
       
 0.5 >
+
+
       socket.to 로 같은방 사람들에게 메세지를 보낼수 있음. (본인 빼고 방안의 사람한테 보냄)
       socket.rooms 로 socket이 들어가있는 방을 알수있음. (기본적으로 서버와 유저간의 private room 이 하나 있음)
       emit은 socket으로 event이름을 전달한다.
@@ -57,6 +68,7 @@ pug > html을 가독성있게 쓸수 있게 해줌.
       채팅창 기능을 구현할 수 있었다.
 
 0.6 > 
+
       socket["nickname"] = nickname 처럼 socket에 내가 원하는 payload를 만들 수 있음.
       browser가 server랑 연결하면 private room이 자동으로 만들어짐. 
       그리고 우리가 만드는 방은 public room이다. ex) You joined nico room.
@@ -65,6 +77,5 @@ pug > html을 가독성있게 쓸수 있게 해줌.
       socket.emit() >  사용자 < > 서버 일대일로 이루어짐.
       server.sockets.emit() 서버에있는 모든 브라우저한테 보냄 
       public rooms는 사용자가 없으면 삭제된다.
-      
       admin 모드도 쓸 수 있는데 오류가 나서 안된다. 나중에 수정해주자..
-      asdf
+      
