@@ -55,4 +55,16 @@ pug > html을 가독성있게 쓸수 있게 해줌.
       event를 받는 쪽에서 socket.on("event name")으로 받는다. 
       이때 argument는 개수, 형태 상관 x.. (awesome) 
       채팅창 기능을 구현할 수 있었다.
+
+0.6 > 
+      socket["nickname"] = nickname 처럼 socket에 내가 원하는 payload를 만들 수 있음.
+      browser가 server랑 연결하면 private room이 자동으로 만들어짐. 
+      그리고 우리가 만드는 방은 public room이다. ex) You joined nico room.
+      public room은 socket id 즉 sids 에 저장이 안되고 rooms에만 저장되므로 
+      adapter를 이용해 우리가 이용할 public room을 뽑아낼 수 있다.
+      socket.emit() >  사용자 < > 서버 일대일로 이루어짐.
+      server.sockets.emit() 서버에있는 모든 브라우저한테 보냄 
+      public rooms는 사용자가 없으면 삭제된다.
+      
+      admin 모드도 쓸 수 있는데 오류가 나서 안된다. 나중에 수정해주자..
       
